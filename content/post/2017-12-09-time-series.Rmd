@@ -1,0 +1,36 @@
+---
+title: Time Series
+author: Eric Koller
+date: '2017-12-09'
+slug: time-series
+categories: []
+tags:
+  - plot
+  - R Markdown
+  - regression
+---
+
+We can use a time series plot to view data over time. Lets use a time series plot to look at Babe Ruth's home run totals for each season he played.
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+```{r}
+#extracting the data
+
+query<-"SELECT yearID,HR FROM Batting WHERE playerID='ruthba01'"
+
+result<-sqldf(query)
+
+#visualizing the data
+
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR),color="black")+
+  geom_line(data=result,aes(x=yearID,y=HR),color="blue")+
+  ggtitle("Ruth's Homerun Totals Through the Years")+
+  xlab("Year")+
+  ylab("Homeruns")
+```
+
