@@ -1,0 +1,31 @@
+---
+title: Histogram
+author: Eric Koller
+date: '2017-12-09'
+slug: histogram
+categories: []
+tags:
+  - plot
+  - R Markdown
+  - regression
+---
+
+Lets use a histogram to look at the weight distribution of professional baseball players.
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+```{r}
+query<-"SELECT weight FROM Master"
+
+result<-sqldf(query)
+
+#visualizing the data
+
+ggplot()+
+  geom_histogram(data=result,aes(x=weight),color="blue",fill="yellow",bins=50)+
+  ggtitle("Body-Weight Distribution for Baseball Players")
+```
+

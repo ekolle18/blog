@@ -23,6 +23,16 @@ library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R v
     </item>
     
     <item>
+      <title>Histogram</title>
+      <link>/post/histogram/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/histogram/</guid>
+      <description>Lets use a histogram to look at the weight distribution of professional baseball players.
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Warning: package &amp;#39;gsubfn&amp;#39; was built under R version 3.4.2## Loading required package: proto## Warning: package &amp;#39;proto&amp;#39; was built under R version 3.4.2## Loading required package: RSQLitelibrary(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.</description>
+    </item>
+    
+    <item>
       <title>Scatterplot</title>
       <link>/post/scatterplot/</link>
       <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
