@@ -5,10 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>
-  Posts
-   | Hugo Blog (SEO Version)
-</title>
+  <title>Bar Plot</title>
 
   
   
@@ -18,15 +15,17 @@
 
 
   
-  <meta name="author" content="Ritchie Zhu" />
-  <meta name="description" content="" />
+  <meta name="author" content="Eric Koller" />
+  <meta name="description" content="Lets make a bar plot to show the number of home runs hit by each team in the 1980 season.
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Warning: package &amp;#39;gsubfn&amp;#39; was built under R version 3.4.2## Loading required package: proto## Warning: package &amp;#39;proto&amp;#39; was built under R version 3." />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@twitter_username" />
-    <meta name="twitter:title" content="Posts" />
-    <meta name="twitter:description" content="" />
+    <meta name="twitter:title" content="Bar Plot" />
+    <meta name="twitter:description" content="Lets make a bar plot to show the number of home runs hit by each team in the 1980 season.
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Warning: package &amp;#39;gsubfn&amp;#39; was built under R version 3.4.2## Loading required package: proto## Warning: package &amp;#39;proto&amp;#39; was built under R version 3." />
     <meta name="twitter:image" content="/img/avatar.jpg" />
   
 
@@ -36,7 +35,7 @@
 <meta name="generator" content="Hugo 0.31.1" />
 
 
-<link rel="canonical" href="/post/" />
+<link rel="canonical" href="/post/bar-plot/" />
 <link rel="alternative" href="/index.xml" title="Hugo Blog" type="application/atom+xml" />
 
 
@@ -99,6 +98,10 @@
     
     <div class="suspension">
       <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
       
     </div>
     
@@ -226,121 +229,79 @@
   </nav>
 </header>
 
-  <section class="main post-list">
-    <header class="list-header offscreen">
-      <h2 class="list-label">Posts List</h2>
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Bar Plot</h1>
+      <p class="post-meta">@Eric Koller · Dec 9, 2017 · 1 min read</p>
     </header>
+    <article class="post-content"><p>Lets make a bar plot to show the number of home runs hit by each team in the 1980 season.</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Warning: package &#39;gsubfn&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning: package &#39;proto&#39; was built under R version 3.4.2</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.2</code></pre>
+<pre class="r"><code>#extracting the data
+
+query&lt;-&quot;SELECT name,HR FROM Teams WHERE yearID=1980
+ORDER BY HR&quot;
+result&lt;-sqldf(query)
+result$name&lt;-factor(result$name,levels=result$name)
+
+#visualizing the data
+
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat=&#39;identity&#39;,
+           color=&#39;blue&#39;,fill=&#39;black&#39;)+
+  coord_flip()+
+  xlab(&quot;Team Name&quot;)+
+  ylab(&quot;Homeruns&quot;)+
+  ggtitle(&quot;1980 Team Homerun Distribution&quot;)</code></pre>
+<p><img src="/post/2017-12-09-bar-plot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/plot"><span class="tag">Plot</span></a></li>
+        
+          <li><a href="/tags/r-markdown"><span class="tag">R Markdown</span></a></li>
+        
+          <li><a href="/tags/regression"><span class="tag">Regression</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
     
     
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/bar-plot/" class="post-link">Bar Plot</a></h3>
-    <p class="post-meta">@Eric Koller · Dec 9, 2017 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">Lets make a bar plot to show the number of home runs hit by each team in the 1980 season.
-library(Lahman)## Warning: package &#39;Lahman&#39; was built under R version 3.4.2library(sqldf)## Warning: package &#39;sqldf&#39; was built under R version 3.4.2## Loading required package: gsubfn## Warning: package &#39;gsubfn&#39; was built under R version 3.4.2## Loading required package: proto## Warning: package &#39;proto&#39; was built under R version 3.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/bar-plot/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/2015-07-23-r-rmarkdown/" class="post-link">Hello R Markdown</a></h3>
-    <p class="post-meta">@Frida Gomam · Jul 23, 2015 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/2015-07-23-r-rmarkdown/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/creating-a-new-theme/" class="post-link">Creating a New Theme</a></h3>
-    <p class="post-meta">@Michael Henderson · Sep 28, 2014 · 34 min read</p>
-  </header>
-  
-  <p class="post-summary">Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I’ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won’t cover using CSS to style your theme.
-We’ll start with creating a new site with a very basic template.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/creating-a-new-theme/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/goisforlovers/" class="post-link">(Hu)go Template Primer</a></h3>
-    <p class="post-meta">@Ritchie Zhu · Jul 28, 2014 · 7 min read</p>
-  </header>
-  
-  <p class="post-summary">Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/goisforlovers/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/hugoisforlovers/" class="post-link">Getting Started with Hugo</a></h3>
-    <p class="post-meta">@Ritchie Zhu · Apr 2, 2014 · 2 min read</p>
-  </header>
-  
-    <img class="post-cover" src="/img/cover.jpg" alt="Getting Started with Hugo">
-  
-  <p class="post-summary">Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/hugoisforlovers/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/migrate-from-jekyll/" class="post-link">Migrate to Hugo from Jekyll</a></h3>
-    <p class="post-meta">@Ritchie Zhu · Mar 10, 2014 · 4 min read</p>
-  </header>
-  
-  <p class="post-summary">Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &lt;root&gt;/ ▾ images/ logo.png  should become
-▾ &lt;root&gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you’ll want any files that should reside at the root (such as CNAME) to be moved to static.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/migrate-from-jekyll/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="/post/hugo-nuo-post-preview/" class="post-link">Hugo 主题 Nuo 文章样式预览</a></h3>
-    <p class="post-meta">@Ritchie Zhu · Jul 17, 2013 · 2 min read</p>
-  </header>
-  
-  <p class="post-summary">这篇文章集中说明本人博客主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些部分的样式，可以去修改 content.scss 和 shortcodes.scss 这两个文件。预告一下，我所用的这个名为 Nuo 的 Hugo 也将于近期发布，敬请期待。
-
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="/post/hugo-nuo-post-preview/">Read More →</a>
-  </footer>
-</article>
-
-      
     
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
     
   </section>
   <footer class="site-footer">

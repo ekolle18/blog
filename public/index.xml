@@ -33,6 +33,16 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
+      <title>Bar Plot</title>
+      <link>/post/bar-plot/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/bar-plot/</guid>
+      <description>Lets make a bar plot to show the number of home runs hit by each team in the 1980 season.
+library(Lahman)## Warning: package &amp;#39;Lahman&amp;#39; was built under R version 3.4.2library(sqldf)## Warning: package &amp;#39;sqldf&amp;#39; was built under R version 3.4.2## Loading required package: gsubfn## Warning: package &amp;#39;gsubfn&amp;#39; was built under R version 3.4.2## Loading required package: proto## Warning: package &amp;#39;proto&amp;#39; was built under R version 3.</description>
+    </item>
+    
+    <item>
       <title>Hello R Markdown</title>
       <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
