@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313"
+baseURL = "https://ekolle18.netlify.com/"
 languageCode = "en"
 title = "Data Science Blog"
 theme = "hugo-nuo"
